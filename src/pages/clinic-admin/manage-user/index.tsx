@@ -44,6 +44,10 @@ import { User } from "@/interfaces/user";
 import Message from "@/components/common/Message";
 
 const ManageUsersPage = () => {
+	const getLocalStorageItem = (key: string) => {
+		if (typeof window === "undefined") return null;
+		return localStorage.getItem(key);
+	};
 	const [openDialog, setOpenDialog] = useState(false);
 	const [dialogMode, setDialogMode] = useState<
 		"add" | "edit" | "assign" | null
@@ -60,7 +64,7 @@ const ManageUsersPage = () => {
 	const [openSnackbar, setOpenSnackbar] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState("");
 	const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
-		"success"
+		"success",
 	);
 
 	// Doctor modal states
@@ -121,7 +125,7 @@ const ManageUsersPage = () => {
 					if (orgUserId) {
 						try {
 							const doctorDetails = await fetchUserDetails(
-								parseInt(orgUserId, 10)
+								parseInt(orgUserId, 10),
 							);
 							if (doctorDetails) {
 								setDoctorUserDetails(doctorDetails);
@@ -360,7 +364,7 @@ const ManageUsersPage = () => {
 	const handleAssignSubmit = (data: any) => {
 		console.log(
 			`Assigning privileges to ${privilegeUser?.firstName} ${privilegeUser?.lastName}:`,
-			data
+			data,
 		);
 		setPrivilegeModalOpen(false);
 	};
@@ -451,7 +455,7 @@ const ManageUsersPage = () => {
 	};
 
 	const handleChangeRowsPerPage = (
-		event: React.ChangeEvent<HTMLInputElement>
+		event: React.ChangeEvent<HTMLInputElement>,
 	) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
@@ -498,7 +502,7 @@ const ManageUsersPage = () => {
 						display='flex'
 						justifyContent='flex-end'
 						gap={1}>
-						{localStorage.getItem("clinicType") !== "SoloPractice" && (
+						{getLocalStorageItem("clinicType") !== "SoloPractice" && (
 							<Button
 								variant='contained'
 								sx={{
@@ -794,7 +798,7 @@ const ManageUsersPage = () => {
 											cityId: "",
 											cityMappingId: "",
 											imageFilePath: undefined,
-									  }
+										}
 									: null;
 								setFullDoctorData(fullData);
 								setShowFullDoctorForm(true);
