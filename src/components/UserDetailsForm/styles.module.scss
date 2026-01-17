@@ -1,0 +1,26 @@
+.modalPaper {
+    min-width: 800px;
+    // background: #f8f9fa;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .title {
+    background: #174a7c;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    padding: 16px 0 12px 0;
+  }
+  .proceedButton, .cancelButton {
+    background: #2e7d32 !important;
+    color: #fff !important;
+    font-weight: bold;
+    min-width: 100px;
+    text-transform: none;
+    box-shadow: none;
+  }
+  .cancelButton {
+    background: #1976d2 !important;
+  }

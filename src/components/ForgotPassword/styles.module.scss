@@ -1,0 +1,33 @@
+@media (max-width: 768px) {
+  .leftSide {
+    display: none;
+  }
+}
+
+.formContainer {
+  animation: fadeIn 0.5s ease-out;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form {
+  .MuiGrid-container {
+    margin-top: -8px;
+    margin-bottom: -8px;
+  }
+}
+
+.formFieldWrapper {
+  position: relative;
+  min-height: 70px;
+}
+
+.helperText {
+  position: absolute;
+  bottom: -5px;
+  left: 14px;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+  

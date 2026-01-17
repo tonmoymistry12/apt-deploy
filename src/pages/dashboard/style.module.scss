@@ -1,0 +1,261 @@
+.dashboardContainer {
+  min-height: 100vh;
+  padding: 24px;
+ 
+
+  :global {
+    .react-grid-item {
+      transition: all 200ms ease;
+      transition-property: left, top;
+      
+      &.react-grid-placeholder {
+        background: #00695c;
+        opacity: 0.2;
+        border-radius: 8px;
+      }
+      
+      &:hover {
+        .MuiPaper-root {
+          box-shadow: 0 4px 20px rgba(0, 105, 92, 0.15);
+          border-color: #00695c;
+        }
+      }
+    }
+    
+    .react-resizable-handle {
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    color: #00695c;
+
+    h4 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1a237e;
+    }
+
+    .dateDisplay {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #666;
+      background: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+  }
+
+  .sectionTitle {
+    color: #1a237e;
+    margin-bottom: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .statsCard {
+    min-height: 120px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .cardContent {
+      padding: 16px 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cardHeader {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+
+      .MuiSvgIcon-root {
+        font-size: 24px;
+      }
+    }
+
+    .cardValue {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1a237e;
+      margin: 4px 0 8px;
+    }
+
+    .cardTitle {
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .cardSubtext {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    &.hotelCard .MuiSvgIcon-root { color: #1976d2; }
+    &.cabCard .MuiSvgIcon-root { color: #2e7d32; }
+    &.destinationCard .MuiSvgIcon-root { color: #ed6c02; }
+    &.customerCard .MuiSvgIcon-root { color: #9c27b0; }
+
+    &.upcomingCard,
+    &.ongoingCard,
+    &.todayCard,
+    &.leadsCard {
+      .cardContent {
+        min-height: 140px;
+      }
+      
+      .tripsList,
+      .bookingStats,
+      .leadsStats {
+        margin-top: auto;
+        padding-top: 8px;
+      }
+    }
+  }
+
+  .tripsList, .bookingStats, .leadsStats {
+    margin-top: auto;
+
+    .MuiChip-root {
+      background: #f5f5f5;
+      font-weight: 500;
+    }
+  }
+
+  .leadsStats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 16px;
+
+    .MuiTypography-body2 {
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .MuiTypography-h6 {
+      font-weight: 600;
+    }
+  }
+
+  .recentBookings {
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+    .bookingCard {
+      border-radius: 12px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      .bookingHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .bookingDetails {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .MuiTypography-body2 {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #666;
+        }
+      }
+    }
+  }
+
+  .buttonGroup {
+    display: flex;
+    gap: 12px;
+
+    button {
+      border-radius: 8px;
+      text-transform: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      
+      &.MuiButton-contained {
+        background: linear-gradient(45deg, #1976d2 30%, #2196f3 90%);
+        box-shadow: 0 3px 5px 2px rgba(33, 150, 243, .3);
+        
+        &:hover {
+          background: linear-gradient(45deg, #1565c0 30%, #1976d2 90%);
+        }
+      }
+
+      &.MuiButton-outlined {
+        border-color: #90caf9;
+        color: #1976d2;
+        
+        &:hover {
+          background: #e3f2fd;
+          border-color: #1976d2;
+        }
+      }
+    }
+  }
+
+  .draggableGrid {
+    .gridItem {
+      cursor: move;
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      &.dragging {
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .chartCard {
+    height: 100%;
+    
+    .cardContent {
+      padding: 16px 20px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboardContainer {
+    padding: 16px;
+    margin-left: 0;
+
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+}

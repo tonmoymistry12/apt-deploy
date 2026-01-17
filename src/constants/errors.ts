@@ -1,0 +1,1 @@
+export const requiredMessage:string = 'This is a required field'

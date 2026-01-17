@@ -1,0 +1,25 @@
+[
+  {
+    "name": "John Doe",
+    "address": "123 Main Street",
+    "city": "New York",
+    "state": "NY",
+    "pin": "10001",
+    "country": "USA",
+    "contactNumber": "9876543210",
+    "email": "john.doe@example.com",
+    "status": "Active"
+  },
+  {
+    "name": "Jane Smith",
+    "address": "456 Park Avenue",
+    "city": "Los Angeles",
+    "state": "CA",
+    "pin": "90001",
+    "country": "USA",
+    "contactNumber": "8765432109",
+    "email": "jane.smith@example.com",
+    "status": "Inactive"
+  }
+ 
+]

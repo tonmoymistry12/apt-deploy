@@ -1,0 +1,137 @@
+.appBar {
+  background: #fff !important;
+  box-shadow: 0 1px 7px 0 rgb(0 0 0 / 40%);
+  padding: 0 15px;
+  z-index: 10;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; // Add transition for smooth animation
+  z-index: 999 !important;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  width: 200px;
+
+}
+
+.desktopMenu {
+  display: flex;
+  gap: 24px;
+  color: #000;
+
+  button {
+    font-size: 1rem;
+    text-transform: none;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.menuButton {
+  color: #000;
+  font-size: 2rem;
+  padding: 0;
+
+  svg {
+    path {
+      fill: #000;
+    }
+  }
+}
+
+.breadcrumbWrapper {}
+
+.breadcrumb {
+  display: flex;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: #000;
+
+  .breadcrumbItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .capitalize {
+      text-transform: capitalize;
+    }
+  }
+}
+
+/* Animation for Header visibility */
+.headerVisible {
+  opacity: 1;
+  transform: translateY(0); // Slide in from top
+}
+
+.headerHidden {
+  opacity: 0;
+  transform: translateY(-100%); // Hide off-screen
+}
+
+/* Mobile Fullscreen Overlay */
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-in-out;
+  z-index: 99999999;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.mobileMenuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+  li {
+    margin: 20px 0;
+  }
+}
+
+.mobileMenuItem a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #f0a500;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 110px;
+  }
+
+  .menuButton {
+    color: #000;
+    font-size: 2rem;
+  }
+}

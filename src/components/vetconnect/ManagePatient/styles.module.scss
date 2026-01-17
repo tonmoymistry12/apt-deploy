@@ -1,0 +1,52 @@
+.legend{
+    width: 304px;
+  }
+
+  .contactLegend{
+    width: 94px;
+  }
+
+  .homeLegend{
+    width: 168px;
+  }
+
+  .dietLegend{
+    width: 53px;
+  }
+
+  .dieseaseHistoryLegend{
+    width: 173px;
+  }
+
+  .traningInformation{
+    width: 238px;
+  }
+
+  .expirenceLegend{
+    width: 107px;
+  }
+
+  .sharedDocumentLegend{
+    width:198px
+  }
+  
+  .fieldset{
+    border: 3px solid;
+  }
+
+  .ovalButton {
+    width: 140px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #1976d2; /* MUI primary color */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ovalButton:hover {
+    background-color: #115293; /* MUI primary.dark */
+  }
+

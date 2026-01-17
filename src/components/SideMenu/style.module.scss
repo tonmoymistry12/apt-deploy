@@ -1,0 +1,200 @@
+/* style.module.scss */
+.scrollContainer {
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    border-right: 1px solid #e2e8f0;
+    padding: 8px 0;
+    padding-bottom: 60px !important;
+
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #94a3b8;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: #64748b;
+    }
+
+    overflow-y: auto;
+}
+
+.menuItem {
+    margin: 4px 12px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    padding: 10px 16px !important;
+    
+    &:hover {
+        background: rgba(26, 54, 93, 0.04);
+
+        .menuIcon, .menuText {
+            color: #1a365d !important;
+        }
+    }
+
+    .menuIcon {
+        color: #64748b;
+        min-width: 36px !important;
+        font-size: 1.25rem !important;
+        margin: 0 !important;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+    .menuText {
+        color: #475569;
+        font-weight: 500;
+        font-size: 0.95rem;
+        margin-left: 12px;
+        transition: all 0.2s ease;
+        letter-spacing: 0.01em;
+    }
+
+    &.active {
+        background: rgba(26, 54, 93, 0.08);
+
+        .menuIcon, .menuText {
+            color: #1a365d !important;
+            font-weight: 600;
+        }
+    }
+
+    &.collapsed {
+        padding: 10px 0 !important;
+        margin: 4px auto;
+        width: 44px;
+        display: flex;
+        justify-content: center;
+
+        .menuIcon {
+            margin: 0 auto !important;
+            min-width: unset !important;
+        }
+    }
+}
+
+.nestedMenu {
+    padding-left: 20px;
+    margin-top: 4px;
+    background: rgba(26, 54, 93, 0.02);
+    border-radius: 8px;
+    margin: 4px 8px;
+    
+    .menuItem {
+        margin: 2px 12px;
+        padding: 8px 16px !important;
+        
+        .menuIcon {
+            font-size: 0.9rem !important;
+            min-width: 32px !important;
+        }
+        
+        .menuText {
+            font-size: 0.8rem;
+            color: #475569;
+            font-weight: 400;
+        }
+
+        &.active {
+            background: rgba(26, 54, 93, 0.08);
+        }
+
+        &:hover {
+            background: rgba(26, 54, 93, 0.04);
+        }
+    }
+}
+
+.expandIcon {
+    color: #64748b;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    margin-left: 4px;
+
+    &:hover {
+        color: #1a365d !important;
+    }
+}
+
+.divider {
+    margin: 16px 24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+}
+
+// Logout button specific styles
+.logoutButton {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 24px);
+    margin: 0 12px;
+    border-radius: 12px 12px 0 0;
+    transition: all 0.2s ease;
+    padding: 12px 16px !important;
+    background: transparent;
+    z-index: 1;
+
+    &:hover {
+        background: rgba(220, 38, 38, 0.08);
+
+        .menuIcon, .menuText {
+            color: #dc2626;
+        }
+    }
+
+    .menuIcon {
+        color: #dc2626;
+        transition: all 0.2s ease;
+        min-width: 36px !important;
+        display: flex;
+        justify-content: center;
+    }
+
+    .menuText {
+        color: #dc2626;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    &.collapsed {
+        width: 44px;
+        padding: 12px 0 !important;
+        margin: 0 auto;
+        left: 0;
+
+        .menuIcon {
+            margin: 0 auto !important;
+            min-width: unset !important;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+// Menu section spacing
+.menuSection {
+    margin-bottom: 8px;
+    padding: 0 12px;
+}
+
+// Active indicator
+.activeIndicator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 24px;
+    background: #2563eb;
+    border-radius: 0 2px 2px 0;
+    transition: all 0.2s ease;
+}

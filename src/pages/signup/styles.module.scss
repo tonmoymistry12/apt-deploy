@@ -1,0 +1,112 @@
+.signupContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+margin: 0;
+  @media (max-width: 768px) {
+    height: unset;
+    flex-direction: column;
+  }
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+  order: 2; // Default order for desktop, comes second in mobile view
+padding: 0 !important;
+  @media (max-width: 768px) {
+    order: 2; // Ensures this section appears second in mobile view
+    padding: 0;
+  }
+
+  .imageBox {
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    @media (max-width: 768px) {
+     height: 100%;
+    }
+
+    .signupImage {
+      width: 100%;
+    }
+
+    .imageText {
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  order: 1; // Default order for desktop, comes first in mobile view
+ background: #eee;
+  @media (max-width: 768px) {
+    order: 1; // Ensures this section appears first in mobile view
+    padding: 0;
+  }
+
+  .signupForm {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+
+    .signupTitle {
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .inputField {
+      margin-bottom: 1rem;
+    }
+
+    .checkboxLabel {
+      display: flex;
+      justify-content: start;
+      margin-bottom: 1rem;
+    }
+
+    .signupButton {
+      margin-top: 1rem;
+      padding: 0.8rem 1.5rem;
+    }
+
+    .signupFooter,
+    .forgotPassword {
+      margin-top: 1rem;
+
+      a {
+        color: #1976d2;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .leftSide,
+  .rightSide {
+    padding: 0;
+  }
+
+  .rightSide {
+   
+    .signupForm {
+      max-width: 100%;
+      padding: 15px;
+    }
+  }
+}

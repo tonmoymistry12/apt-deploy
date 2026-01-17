@@ -1,0 +1,19 @@
+.appBar {
+    background-color: white !important; // Override Material-UI default
+    z-index: 1201;
+  }
+  
+  .toolbar {
+    justify-content: space-between;
+  }
+  
+  .logoBox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 40px;
+    cursor: pointer;
+  }
+  

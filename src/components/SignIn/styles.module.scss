@@ -1,0 +1,59 @@
+.formContainer {
+  
+  padding: 2rem !important;
+}
+
+.formTitle {
+  color: #1a365d;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.formSubtitle {
+  color: #666;
+}
+
+.formField {
+  margin-bottom: 0;
+}
+
+.checkbox {
+  color: #1a365d !important;
+  &.Mui-checked {
+    color: #1a365d !important;
+  }
+}
+
+.checkboxLabel {
+  color: #666;
+}
+
+.textButton {
+  color: #1a365d !important;
+  text-transform: none !important;
+  &:hover {
+    background-color: rgba(26, 54, 93, 0.04) !important;
+  }
+}
+
+.submitButton {
+  background-color: #1a365d !important;
+  padding: 0.8rem !important;
+  text-transform: none !important;
+  font-size: 1rem !important;
+  position: relative;
+  &:hover {
+    background-color: #142c4c !important;
+  }
+}
+
+.signupButton {
+  color: #1a365d !important;
+  border-color: #1a365d !important;
+  padding: 0.8rem !important;
+  text-transform: none !important;
+  font-size: 1rem !important;
+  &:hover {
+    background-color: rgba(26, 54, 93, 0.04) !important;
+  }
+} 

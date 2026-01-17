@@ -1,0 +1,25 @@
+.modalPaper {
+    min-width: 400px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .content {
+    padding: 32px 32px 16px 32px;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+  .yesButton, .noButton {
+    background: #174a7c !important;
+    color: #fff !important;
+    font-weight: bold;
+    min-width: 80px;
+    text-transform: none;
+    box-shadow: none;
+  }
+  .noButton {
+    background: #3b5c7e !important;
+  }

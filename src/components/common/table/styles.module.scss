@@ -1,0 +1,39 @@
+/* Define a local wrapper class */
+.tableWrapper :global(table > thead > tr) {
+    background-color: #0f4071;
+  }
+  
+  .tableWrapper :global(table > thead > tr > th) {
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* Pagination Styles */
+  .tableWrapper :global(.MuiTablePagination-toolbar) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: nowrap;
+    min-height: auto;
+    padding: 0;
+  }
+  
+  .tableWrapper :global(.MuiTablePagination-selectLabel),
+  .tableWrapper :global(.MuiInputBase-root),
+  .tableWrapper :global(.MuiTablePagination-select),
+  .tableWrapper :global(.MuiTablePagination-selectIcon),
+  .tableWrapper :global(.MuiTablePagination-displayedRows) {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    white-space: nowrap;
+  }
+  
+  .tableWrapper :global(.MuiTablePagination-displayedRows) {
+    margin-left: 30px;
+  }
+
+
+
+
+  

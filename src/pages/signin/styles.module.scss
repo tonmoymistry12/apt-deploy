@@ -1,0 +1,551 @@
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signupContainer {
+    height: 100vh;
+  }
+  
+  .leftSide {
+    flex: 1;
+    background: linear-gradient(to right, #0a1f38, #102f51, #0a1f38);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('/images/pattern.png');
+      opacity: 0.1;
+    }
+
+    .leftContent {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out;
+      width: 100%;
+      max-width: 800px;
+      padding: 2rem;
+
+      .logoWrapper {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-radius: 10px;
+        
+        .logo {
+          object-fit: contain;
+          max-width: 100%;
+        }
+      }
+
+      .adminIllustration {
+        margin: 2rem 0;
+        .illustration {
+          animation: slideIn 1s ease-out;
+        }
+      }
+
+      .welcomeText {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .subText {
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+  }
+  
+  .imageBox {
+    text-align: center;
+  }
+  
+  .signupImage {
+    border-radius: 10px;
+  }
+  
+  .imageText {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  .rightSide {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f7fa;
+    padding: 2rem;
+  }
+  
+  .signupForm {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .signupTitle {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .signupSubtitle {
+    margin-bottom: 2rem;
+    color: #757575;
+  }
+  
+  .forgotPassword {
+    margin: 10px 0;
+    text-align: right;
+  }
+  
+  .googleSigninButton {
+    border-color: #4285f4;
+    color: #4285f4;
+  
+    &:hover {
+      background-color: rgba(66, 133, 244, 0.1);
+    }
+  }
+  
+  .signupFooter {
+    margin-top: 2rem;
+    text-align: center;
+  
+    a {
+      text-decoration: none;
+      color: #4285f4;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  .formWrapper {
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 1s ease-out;
+
+    .formTitle {
+      color: #004d40;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .formSubtitle {
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .textField {
+        background-color: white;
+        border-radius: 8px;
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+
+      .signInButton {
+        background: linear-gradient(to right, #0a1f38, #102f51, #0a1f38);
+        padding: 12px;
+        text-transform: none;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: linear-gradient(to right, #0a1f38, #102f51, #0a1f38);
+          box-shadow: 0 4px 20px rgba(0, 77, 64, 0.4);
+        }
+
+        &:disabled {
+          background: #80cbc4;
+        }
+      }
+    }
+  }
+
+@media (max-width: 768px) {
+  .leftSide {
+    display: none;
+  }
+}
+
+.formContainer {
+  animation: fadeIn 0.5s ease-out;
+  width: 100%;
+  max-width: 400px;
+}
+
+.formTitle {
+  font-weight: 700;
+  color: #1a365d;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
+
+  @media (min-width: 1200px) {
+    font-size: 2rem;
+  }
+}
+
+.formSubtitle {
+  color: #4a5568;
+}
+
+.formField {
+  .MuiOutlinedInput-root {
+    border-radius: 10px;
+  }
+
+  .MuiFormHelperText-root {
+    margin: 0;
+    min-height: 20px;
+  }
+}
+
+.submitButton {
+  padding: 1.2rem 0;
+  font-size: 1rem;
+  text-transform: none;
+  border-radius: 10px;
+  background-color: #1a365d !important;
+  position: relative;
+  min-height: 48px;
+
+  &:disabled {
+    background-color: rgba(26, 54, 93, 0.7) !important;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.signupButton {
+  padding: 1.2rem 0;
+  text-transform: none;
+  border-radius: 10px;
+}
+
+.textButton {
+  color: #4a5568;
+}
+
+.checkbox {
+  color: #1a365d;
+  
+  &.Mui-checked {
+    color: #1a365d;
+  }
+}
+
+.checkboxLabel {
+  color: #4a5568;
+}
+
+.leftBackground {
+  display: none;
+  width: 55%;
+  position: relative;
+  flex-direction: column;
+  background-color: #ffffff;
+
+  @media (min-width: 1200px) {
+    display: flex;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(26, 54, 93, 0.4), rgba(26, 54, 93, 0.3));
+    z-index: 1;
+  }
+}
+
+.headerSection {
+  height: 17.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding: 1rem;
+}
+
+.mainTitle {
+  color: #451a5d;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 2.5rem;
+
+  @media (min-width: 1200px) {
+    font-size: 3rem;
+  }
+}
+
+.subTitle {
+  color: #1a365d;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  font-size: 0.9rem;
+
+  @media (min-width: 1200px) {
+    font-size: 1rem;
+  }
+}
+
+.imageSection {
+  height: 100%;
+  position: relative;
+  background: url(/images/dashboard.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: 0;
+  margin: 0 auto;
+  width: 110%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statsSection {
+  height: 17.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.statsContainer {
+  max-width: 50%;
+}
+
+.statCard {
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background-color: #ffffff80 !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  .icon {
+    font-size: 18px;
+    margin-bottom: 0.5rem;
+    color: #1a365d;
+  }
+
+  .value {
+    font-weight: 800;
+    color: #1a365d;
+    line-height: 1;
+    font-size: 1rem;
+
+    @media (min-width: 1200px) {
+      font-size: 1.15rem;
+    }
+  }
+
+  .label {
+    color: #4a5568;
+    font-size: 0.65rem;
+    margin-top: 0.25rem;
+  }
+}
+
+.rightSection {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.mainContainer {
+  display: flex;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.petIcon {
+  &.bounce {
+    animation: bounce 1s infinite;
+  }
+  
+  &.spin {
+    animation: spin 2s linear infinite;
+  }
+}
+
+// Custom background pattern
+.backgroundPattern {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/pattern.png');
+    opacity: 0.05;
+    pointer-events: none;
+  }
+}
+
+// Custom styles for Material UI components
+.imageWrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.form {
+  .MuiGrid-container {
+    margin-top: -8px;
+    margin-bottom: -8px;
+  }
+
+  .MuiFormControl-root {
+    min-height: 80px; // Reserve space for helper text
+  }
+}
+
+.formField {
+  .MuiOutlinedInput-root {
+    border-radius: 10px;
+    background-color: #f8fafc;
+    height: 48px;
+
+    &.Mui-focused {
+      background-color: white;
+
+      .MuiOutlinedInput-notchedOutline {
+        border-color: #1a365d;
+      }
+    }
+  }
+
+  .MuiInputLabel-root.Mui-focused {
+    color: #1a365d;
+  }
+
+  .MuiFormHelperText-root {
+    margin-top: 4px;
+    min-height: 20px; // Reserve consistent space for helper text
+  }
+}
+
+.statCard {
+  padding: 0.75rem;
+  border-radius: 8px;
+  background-color: #ffffff80 !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+
+  .MuiSvgIcon-root {
+    color: #1a365d;
+  }
+
+  .MuiTypography-root {
+    color: #1a365d;
+  }
+}
+
+.submitButton {
+  background-color: #1a365d !important;
+  box-shadow: 0 4px 16px rgba(26, 54, 93, 0.25);
+  height: 48px;
+
+  &:active {
+    background-color: #152c4e !important;
+  }
+}
+
+.signupButton {
+  border: 2px solid #1a365d !important;
+  color: #1a365d !important;
+  height: 48px;
+}
+
+.textButton {
+  font-weight: 500;
+  padding: 4px 8px;
+  min-width: auto;
+  color: #1a365d !important;
+}
+
+.checkbox {
+  padding: 4px;
+  
+  .MuiSvgIcon-root {
+    font-size: 1.1rem;
+    color: #1a365d;
+  }
+}
+  

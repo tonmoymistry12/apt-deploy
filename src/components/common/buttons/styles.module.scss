@@ -1,0 +1,31 @@
+.submitButton {
+  background-color: #1a365d !important;
+  box-shadow: 0 4px 16px rgba(26, 54, 93, 0.25);
+  transition: all 0.3s ease;
+  height: 48px;
+
+  &:hover {
+    background-color: #234681 !important;
+    box-shadow: 0 6px 20px rgba(26, 54, 93, 0.35);
+  }
+
+  &:active {
+    background-color: #152c4e !important;
+  }
+}
+
+.textButton {
+  font-weight: 500;
+  transition: all 0.2s ease;
+  padding: 4px 8px;
+  min-width: auto;
+  color: #1a365d !important;
+
+  &:hover {
+    background-color: rgba(26, 54, 93, 0.05) !important;
+  }
+}
+
+.buttonMargin{
+  margin-right: 5px;
+}
