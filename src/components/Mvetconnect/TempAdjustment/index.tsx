@@ -37,7 +37,7 @@ interface TempAdjustmentProps {
 	open: boolean;
 	onClose: () => void;
 	calendarData: any;
-	selectedDoctor: any;
+	selectedDoctor?: any;
 	facility: FaclityServiceResponse | null;
 	onSuccess?: () => void; // Callback to refresh calendar list after successful adjustment
 }
@@ -92,13 +92,13 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 
 	// Hour ranges for different slots (matching ConfirmWeeklyCalendar)
 	const morningHours = Array.from({ length: 13 }, (_, i) =>
-		i.toString().padStart(2, "0")
+		i.toString().padStart(2, "0"),
 	); // 00-12
 	const afternoonHours = Array.from({ length: 11 }, (_, i) =>
-		(i + 13).toString().padStart(2, "0")
+		(i + 13).toString().padStart(2, "0"),
 	); // 13-23
 	const allMinutes = Array.from({ length: 60 }, (_, i) =>
-		i.toString().padStart(2, "0")
+		i.toString().padStart(2, "0"),
 	);
 
 	useEffect(() => {
@@ -164,7 +164,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 			// Helper function to parse time string (HH:MM format)
 			const parseTimeSlot = (
 				startTime: string | null,
-				stopTime: string | null
+				stopTime: string | null,
 			): TimeSlot | null => {
 				if (
 					!startTime ||
@@ -280,7 +280,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 								s.fromHour === slot.fromHour &&
 								s.fromMin === slot.fromMin &&
 								s.toHour === slot.toHour &&
-								s.toMin === slot.toMin
+								s.toMin === slot.toMin,
 						);
 						if (!exists) allSlots.push(slot);
 					}
@@ -303,7 +303,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 								s.fromHour === slot.fromHour &&
 								s.fromMin === slot.fromMin &&
 								s.toHour === slot.toHour &&
-								s.toMin === slot.toMin
+								s.toMin === slot.toMin,
 						);
 						if (!exists) allSlots.push(slot);
 					}
@@ -334,7 +334,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 				const slot1Data = allSlots.find((slot) => parseInt(slot.fromHour) < 13);
 				// Find slot 2 data (13-23 range) from parsed slots
 				const slot2Data = allSlots.find(
-					(slot) => parseInt(slot.fromHour) >= 13
+					(slot) => parseInt(slot.fromHour) >= 13,
 				);
 
 				console.log("Slot 1 data:", slot1Data);
@@ -348,7 +348,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 						toHour: "00",
 						toMin: "00",
 						notAvailable: false,
-					}
+					},
 				);
 
 				// ALWAYS add slot 2 (with data or default 13:00)
@@ -359,7 +359,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 						toHour: "14",
 						toMin: "00",
 						notAvailable: false,
-					}
+					},
 				);
 			} else {
 				// No slot 2 time - just show slot 1 or default
@@ -386,14 +386,14 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 			console.log(
 				"State set. Slots should now be:",
 				finalSlots.length,
-				"slots"
+				"slots",
 			);
 
 			// Force re-render by logging after state update
 			setTimeout(() => {
 				console.log(
 					"After state update - timeSlots.length should be:",
-					finalSlots.length
+					finalSlots.length,
 				);
 			}, 100);
 
@@ -419,7 +419,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 					deviceStat: "M",
 					facilityId: facility.facilityId,
 				},
-				selectedDoctor
+				selectedDoctor,
 			);
 
 			if (response.status === "ok") {
@@ -476,7 +476,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 	const handleSlotChange = (
 		index: number,
 		field: keyof TimeSlot,
-		value: string | boolean
+		value: string | boolean,
 	) => {
 		const newSlots = [...timeSlots];
 		newSlots[index] = { ...newSlots[index], [field]: value };
@@ -500,7 +500,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 						orgId: localStorage.getItem("orgId") || "2",
 						facilityId: facility.facilityId,
 					},
-					selectedDoctor
+					selectedDoctor,
 				);
 
 				console.log("Selected day slots response:", response);
@@ -530,7 +530,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 				const stopTime2 = response[stopTime2Field] as string | null;
 
 				console.log(
-					`Day: ${dayName}, Slot1: ${startTime1}-${stopTime1}, Slot2: ${startTime2}-${stopTime2}`
+					`Day: ${dayName}, Slot1: ${startTime1}-${stopTime1}, Slot2: ${startTime2}-${stopTime2}`,
 				);
 
 				// Helper function to determine if a time belongs to slot 2 (afternoon/evening slots 13-23)
@@ -543,7 +543,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 				// Helper function to parse time slot
 				const parseTimeSlot = (
 					start: string | null,
-					stop: string | null
+					stop: string | null,
 				): TimeSlot | null => {
 					if (!start || !stop || (start === "00:00" && stop === "00:00")) {
 						return null;
@@ -573,7 +573,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 				// Check if startTime1 is in slot 2 range (13-23)
 				if (startTime1 && stopTime1 && isSlot2Time(startTime1)) {
 					console.log(
-						`Adding slot2 data from startTime1: ${startTime1} - ${stopTime1}`
+						`Adding slot2 data from startTime1: ${startTime1} - ${stopTime1}`,
 					);
 					const slot = parseTimeSlot(startTime1, stopTime1);
 					if (slot) allSlots.push(slot);
@@ -587,7 +587,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 					!(startTime1 === "00:00" && stopTime1 === "00:00")
 				) {
 					console.log(
-						`Adding slot1 data from startTime1: ${startTime1} - ${stopTime1}`
+						`Adding slot1 data from startTime1: ${startTime1} - ${stopTime1}`,
 					);
 					const slot = parseTimeSlot(startTime1, stopTime1);
 					if (slot) allSlots.push(slot);
@@ -596,7 +596,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 				// Check if startTime2 is in slot 2 range (13-23)
 				if (startTime2 && stopTime2 && isSlot2Time(startTime2)) {
 					console.log(
-						`Adding slot2 data from startTime2: ${startTime2} - ${stopTime2}`
+						`Adding slot2 data from startTime2: ${startTime2} - ${stopTime2}`,
 					);
 					const slot = parseTimeSlot(startTime2, stopTime2);
 					if (slot) {
@@ -606,7 +606,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 								s.fromHour === slot.fromHour &&
 								s.fromMin === slot.fromMin &&
 								s.toHour === slot.toHour &&
-								s.toMin === slot.toMin
+								s.toMin === slot.toMin,
 						);
 						if (!exists) allSlots.push(slot);
 					}
@@ -620,7 +620,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 					!(startTime2 === "00:00" && stopTime2 === "00:00")
 				) {
 					console.log(
-						`Adding slot1 data from startTime2: ${startTime2} - ${stopTime2}`
+						`Adding slot1 data from startTime2: ${startTime2} - ${stopTime2}`,
 					);
 					const slot = parseTimeSlot(startTime2, stopTime2);
 					if (slot) {
@@ -630,7 +630,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 								s.fromHour === slot.fromHour &&
 								s.fromMin === slot.fromMin &&
 								s.toHour === slot.toHour &&
-								s.toMin === slot.toMin
+								s.toMin === slot.toMin,
 						);
 						if (!exists) allSlots.push(slot);
 					}
@@ -649,12 +649,12 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 
 				// Check if selected date has slot 2 time (>= 13:00)
 				const hasSlot2TimeForDate = allSlots.some(
-					(slot) => parseInt(slot.fromHour) >= 13
+					(slot) => parseInt(slot.fromHour) >= 13,
 				);
 
 				console.log(
 					"Date selection - Has slot 2 time (>= 13:00)?",
-					hasSlot2TimeForDate
+					hasSlot2TimeForDate,
 				);
 
 				// Build final slots array - SIMPLE LOGIC
@@ -665,11 +665,11 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 
 					// Find slot 1 data (00-12 range) from parsed slots
 					const slot1Data = allSlots.find(
-						(slot) => parseInt(slot.fromHour) < 13
+						(slot) => parseInt(slot.fromHour) < 13,
 					);
 					// Find slot 2 data (13-23 range) from parsed slots
 					const slot2Data = allSlots.find(
-						(slot) => parseInt(slot.fromHour) >= 13
+						(slot) => parseInt(slot.fromHour) >= 13,
 					);
 
 					console.log("Date selection - Slot 1 data:", slot1Data);
@@ -683,7 +683,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 							toHour: "00",
 							toMin: "00",
 							notAvailable: false,
-						}
+						},
 					);
 
 					// ALWAYS add slot 2 (with data or default 13:00)
@@ -694,7 +694,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 							toHour: "14",
 							toMin: "00",
 							notAvailable: false,
-						}
+						},
 					);
 				} else {
 					// No slot 2 time - just show slot 1 or default
@@ -719,14 +719,14 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 				console.log(
 					"State set. Slots should now be:",
 					finalSlots.length,
-					"slots"
+					"slots",
 				);
 
 				// Force re-render by logging after state update
 				setTimeout(() => {
 					console.log(
 						"After date selection - timeSlots.length should be:",
-						finalSlots.length
+						finalSlots.length,
 					);
 				}, 100);
 
@@ -822,7 +822,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 					slot.fromHour !== "" &&
 					slot.fromMin !== "" &&
 					slot.toHour !== "" &&
-					slot.toMin !== ""
+					slot.toMin !== "",
 			);
 
 			console.log("=== DAYTIME GENERATION DEBUG ===");
@@ -962,7 +962,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 
 	const handleCloseSnackbar = (
 		event?: React.SyntheticEvent | Event,
-		reason?: string
+		reason?: string,
 	) => {
 		if (reason === "clickaway") return;
 		setSnackbar((prev) => ({ ...prev, open: false }));
@@ -999,7 +999,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 
 			if (hasSlot2) {
 				console.log(
-					"FORCE FIX: Detected slot 2 data but only 1 slot showing. Adding slot 2 now."
+					"FORCE FIX: Detected slot 2 data but only 1 slot showing. Adding slot 2 now.",
 				);
 				setTimeSlots([
 					timeSlots[0], // Keep slot 1
@@ -1348,7 +1348,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 										"RENDERING - Current timeSlots array:",
 										timeSlots,
 										"Length:",
-										timeSlots.length
+										timeSlots.length,
 									)}
 									{timeSlots.map((slot, index) => (
 										<Box
@@ -1411,7 +1411,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 																	handleSlotChange(
 																		index,
 																		"fromHour",
-																		e.target.value
+																		e.target.value,
 																	)
 																}
 																disabled={slot.notAvailable}>
@@ -1437,7 +1437,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 																	handleSlotChange(
 																		index,
 																		"fromMin",
-																		e.target.value
+																		e.target.value,
 																	)
 																}
 																disabled={slot.notAvailable}>
@@ -1473,7 +1473,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 																	handleSlotChange(
 																		index,
 																		"toHour",
-																		e.target.value
+																		e.target.value,
 																	)
 																}
 																disabled={slot.notAvailable}>
@@ -1499,7 +1499,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 																	handleSlotChange(
 																		index,
 																		"toMin",
-																		e.target.value
+																		e.target.value,
 																	)
 																}
 																disabled={slot.notAvailable}>
@@ -1541,7 +1541,7 @@ const TempAdjustment: React.FC<TempAdjustmentProps> = ({
 																handleSlotChange(
 																	index,
 																	"notAvailable",
-																	e.target.checked
+																	e.target.checked,
 																)
 															}
 															sx={{
