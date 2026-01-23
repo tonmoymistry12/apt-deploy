@@ -696,7 +696,7 @@ interface UpdateHomeVisitResponse {
   status: string;
 }
 
-export const updateHomeVisit = async (payload: UpdateHomeVisitPayload): Promise<UpdateHomeVisitResponse> => {
+export const updateHomeVisit = async (payload: any): Promise<UpdateHomeVisitResponse> => {
   try {
     let fixPaylod = {
       ...payload,
@@ -1283,6 +1283,7 @@ export const uploadDocument = async (payload: UploadDocumentPayload): Promise<{ 
     formData.append('uploaded_file', payload.uploaded_file);
     formData.append('loggedInFacilityId', localStorage.getItem("loggedinFacilityId") || "");
     formData.append('orgId', localStorage.getItem("orgId") || "");
+    formData.append('doctorUId', localStorage.getItem("doctorUid") || "");
 
     const response = await http.post<UploadDocumentResponse>('/uploaddocument', formData, {
       headers: {

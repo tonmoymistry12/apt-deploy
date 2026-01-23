@@ -15,12 +15,13 @@ import {
 	Autocomplete,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { addUser } from "@/services/userService";
+import { addUser, checkDuplicateUsername } from "@/services/userService";
 import {
 	getAreaListSearchText,
 	getCityList,
 } from "@/services/faclilityService";
 import { Controller, useForm } from "react-hook-form";
+import Message from "../common/Message";
 
 // Reusable StyledTextField component
 const StyledTextField = ({ sx, ...props }: any) => (
@@ -92,6 +93,14 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 	const [areaLoading, setAreaLoading] = useState(false);
 	const [selectedCity, setSelectedCity] = useState<any>(null);
 	const [selectedArea, setSelectedArea] = useState<any>(null);
+
+	const [openSnackbar, setOpenSnackbar] = useState(false);
+	const [snackbarMessage, setSnackbarMessage] = useState("");
+	const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
+		"success",
+	);
+
+	const [isDuplicate, setIsDuplicate] = useState(false);
 
 	const {
 		control,
@@ -208,16 +217,19 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 	// };
 
 	const validateForm = () => {
-		const newErrors = Object.keys(validationRules).reduce((acc, key) => {
-			/* if (key === 'image') {
+		const newErrors = Object.keys(validationRules).reduce(
+			(acc, key) => {
+				/* if (key === 'image') {
         acc[key] = validationRules[key]!(image, imagePreview);
       } else { */
-			(acc as any)[key] = (validationRules as any)[key]!(
-				formValues[key as keyof typeof formValues]
-			);
-			// }
-			return acc;
-		}, {} as typeof errors1);
+				(acc as any)[key] = (validationRules as any)[key]!(
+					formValues[key as keyof typeof formValues],
+				);
+				// }
+				return acc;
+			},
+			{} as typeof errors1,
+		);
 
 		setErrors(newErrors);
 		return !Object.values(newErrors).some((error) => error !== "");
@@ -261,7 +273,7 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 	};
 
 	const handleChange = (
-		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent
+		e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent,
 	) => {
 		const { name, value } = e.target;
 		setFormValues((prev) => ({ ...prev, [name]: value }));
@@ -280,7 +292,7 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 			formData.append("orgId", localStorage.getItem("orgId") || "");
 			formData.append(
 				"loggedinFacilityId",
-				localStorage.getItem("loggedinFacilityId") || ""
+				localStorage.getItem("loggedinFacilityId") || "",
 			);
 			formData.append("userLogin", formValues.username); // update if editing existing user
 			formData.append("userTitle", formValues.title);
@@ -300,7 +312,7 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 			formData.append("cityMasterId", selectedArea.cityId);
 			formData.append(
 				"cityPincodeMappingId",
-				selectedArea?.cityPincodeMappingId
+				selectedArea?.cityPincodeMappingId,
 			);
 			if (image) {
 				formData.append("userImage", image);
@@ -315,6 +327,39 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 			onSubmit(err.response.data.message);
 			console.error("❌ Error:", err);
 		}
+	};
+
+	const checkDuplicateName = async (userName: any) => {
+		if (!userName.trim()) return;
+		console.log(userName);
+		try {
+			const payload = {
+				userName: userName,
+			};
+
+			// Replace this with your actual API function
+			const response: any = await checkDuplicateUsername(payload);
+			console.log(response);
+			if (response.status === "notfound") {
+				setOpenSnackbar(true);
+				setIsDuplicate(false);
+				setSnackbarSeverity("success");
+				setSnackbarMessage(response.message);
+			} else {
+				setIsDuplicate(true);
+				setOpenSnackbar(true);
+				setSnackbarSeverity("error");
+				setSnackbarMessage(response.message);
+			}
+		} catch (error) {
+			setOpenSnackbar(true);
+			setSnackbarSeverity("error");
+			setSnackbarMessage("Error checking role name.");
+		}
+	};
+
+	const handleCloseSnackbar = () => {
+		setOpenSnackbar(false);
 	};
 
 	return (
@@ -386,6 +431,7 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 							name='username'
 							value={formValues.username}
 							onChange={handleChange}
+							onBlur={() => checkDuplicateName(formValues.username)}
 						/>
 					</Grid>
 					<Grid item xs={12} sm={6}>
@@ -433,7 +479,7 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 											? option
 											: `${option.cityName}${
 													option.stateName ? ", " + option.stateName : ""
-											  }`
+												}`
 									}
 									value={selectedCity}
 									onChange={(_, value) => {
@@ -670,6 +716,7 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 							</StyledButton>
 							<StyledButton
 								variant='contained'
+								disabled={isDuplicate}
 								type='submit'
 								sx={{
 									bgcolor: "#0288d1",
@@ -681,6 +728,12 @@ const UserDetailsForm: React.FC<any> = ({ onSubmit, onCancel, open }) => {
 					</Grid>
 				</Grid>
 			</form>
+			<Message
+				openSnackbar={openSnackbar}
+				handleCloseSnackbar={handleCloseSnackbar}
+				snackbarSeverity={snackbarSeverity}
+				snackbarMessage={snackbarMessage}
+			/>
 		</Box>
 	);
 };

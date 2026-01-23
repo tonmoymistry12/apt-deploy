@@ -48,7 +48,7 @@ const Calendar: React.FC = () => {
 	const [editIndex, setEditIndex] = useState<number | null>(null);
 	const [editPrefill, setEditPrefill] = useState<any | null>(null);
 	const [tempAdjustmentData, setTempAdjustmentData] = useState<any | null>(
-		null,
+		null
 	);
 	const [snackbar, setSnackbar] = useState({
 		open: false,
@@ -125,7 +125,7 @@ const Calendar: React.FC = () => {
 	}, []);
 
 	const handleFacilitySelect = async (
-		facility: FaclityServiceResponse | null,
+		facility: FaclityServiceResponse | null
 	) => {
 		setSelectedFacility(facility);
 		if (facility) {
@@ -159,7 +159,7 @@ const Calendar: React.FC = () => {
 		slotDuration: string,
 		facility: FaclityServiceResponse | null,
 		startDate: string,
-		endDate: string,
+		endDate: string
 	) => {
 		try {
 			if (!facility) {
@@ -190,7 +190,7 @@ const Calendar: React.FC = () => {
 			// Format time slots for API (HH-MM-HH-MM format)
 			// Filter out incomplete slots (only keep slots with all time fields filled)
 			const completeSlots = slots.filter(
-				(slot) => slot.fromHour && slot.fromMin && slot.toHour && slot.toMin,
+				(slot) => slot.fromHour && slot.fromMin && slot.toHour && slot.toMin
 			);
 
 			// Format time slots for API (HH-MM-HH-MM format)
@@ -241,7 +241,7 @@ const Calendar: React.FC = () => {
 			if (response.status === "Success") {
 				// Refresh the calendar list from API instead of just adding to local state
 				await fetchExistingCalendars(
-					(selectedFacility?.facilityId || 2).toString(),
+					(selectedFacility?.facilityId || 2).toString()
 				);
 
 				setOpenConfirmWeekly(false);
@@ -327,7 +327,7 @@ const Calendar: React.FC = () => {
 					startTime1: string,
 					stopTime1: string,
 					startTime2: string,
-					stopTime2: string,
+					stopTime2: string
 				) => {
 					if (startTime1 && startTime1 !== "00:00") {
 						const [hour1, min1] = startTime1.split(":");
@@ -359,7 +359,7 @@ const Calendar: React.FC = () => {
 						editData.mondayStartTime1,
 						editData.mondayStopTime1,
 						editData.mondayStartTime2,
-						editData.mondayStopTime2,
+						editData.mondayStopTime2
 					);
 				}
 				if (editData.tuesdayAvailable === 1) {
@@ -367,7 +367,7 @@ const Calendar: React.FC = () => {
 						editData.tuesdayStartTime1,
 						editData.tuesdayStopTime1,
 						editData.tuesdayStartTime2,
-						editData.tuesdayStopTime2,
+						editData.tuesdayStopTime2
 					);
 				}
 				if (editData.wednesdayAvailable === 1) {
@@ -375,7 +375,7 @@ const Calendar: React.FC = () => {
 						editData.wednesdayStartTime1,
 						editData.wednesdayStopTime1,
 						editData.wednesdayStartTime2,
-						editData.wednesdayStopTime2,
+						editData.wednesdayStopTime2
 					);
 				}
 				if (editData.thursdayAvailable === 1) {
@@ -383,7 +383,7 @@ const Calendar: React.FC = () => {
 						editData.thursdayStartTime1,
 						editData.thursdayStopTime1,
 						editData.thursdayStartTime2,
-						editData.thursdayStopTime2,
+						editData.thursdayStopTime2
 					);
 				}
 				if (editData.fridayAvailable === 1) {
@@ -391,7 +391,7 @@ const Calendar: React.FC = () => {
 						editData.fridayStartTime1,
 						editData.fridayStopTime1,
 						editData.fridayStartTime2,
-						editData.fridayStopTime2,
+						editData.fridayStopTime2
 					);
 				}
 				if (editData.saturdayAvailable === 1) {
@@ -399,7 +399,7 @@ const Calendar: React.FC = () => {
 						editData.saturdayStartTime1,
 						editData.saturdayStopTime1,
 						editData.saturdayStartTime2,
-						editData.saturdayStopTime2,
+						editData.saturdayStopTime2
 					);
 				}
 				if (editData.sundayAvailable === 1) {
@@ -407,7 +407,7 @@ const Calendar: React.FC = () => {
 						editData.sundayStartTime1,
 						editData.sundayStopTime1,
 						editData.sundayStartTime2,
-						editData.sundayStopTime2,
+						editData.sundayStopTime2
 					);
 				}
 
@@ -437,7 +437,7 @@ const Calendar: React.FC = () => {
 				setOpenConfirmWeekly(true);
 			} else {
 				console.error(
-					"Failed to get edit slot data: No slotId found in response",
+					"Failed to get edit slot data: No slotId found in response"
 				);
 				setSnackbar({
 					open: true,
@@ -457,7 +457,7 @@ const Calendar: React.FC = () => {
 
 	const handleCloseSnackbar = (
 		event?: React.SyntheticEvent | Event,
-		reason?: string,
+		reason?: string
 	) => {
 		if (reason === "clickaway") return;
 		setSnackbar((prev) => ({ ...prev, open: false }));
@@ -469,7 +469,7 @@ const Calendar: React.FC = () => {
 	};
 
 	const handleChangeRowsPerPage = (
-		event: React.ChangeEvent<HTMLInputElement>,
+		event: React.ChangeEvent<HTMLInputElement>
 	) => {
 		setRowsPerPage(parseInt(event.target.value, 10));
 		setPage(0);
@@ -705,7 +705,7 @@ const Calendar: React.FC = () => {
 																		size='small'
 																		onClick={() =>
 																			handleTempAdjustment(
-																				page * rowsPerPage + idx,
+																				page * rowsPerPage + idx
 																			)
 																		}
 																		sx={{

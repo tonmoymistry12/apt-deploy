@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ notificationCount }) => {
 	const [facilities, setFacilities] = useState<any[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [selectedFacility, setSelectedFacility] = useState<any>(
-		localStorage.getItem("loggedinFacilityId")
+		localStorage.getItem("loggedinFacilityId"),
 	);
 	const router = useRouter();
 

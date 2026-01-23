@@ -214,6 +214,16 @@ export const checkDoctorRegistration = async (payload: RegistrationDetailsPayloa
   }
 };
 
+export const checkDuplicateUsername = async (payload: any): Promise<any> => {
+  try {
+    const response = await http.post('/checkduplicateorgusername', payload);
+    return response.data;
+  } catch (error) {
+    console.error('Error checking username:', error);
+    throw error;
+  }
+};
+
 // Get doctor list interfaces
 export interface GetDoctorListPayload {
   callingFrom: string;

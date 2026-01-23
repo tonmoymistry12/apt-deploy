@@ -39,7 +39,7 @@ const BASE_URL = "https://www.aptcarepet.com";
 // Dynamically import ManageEncounter with SSR disabled to avoid Quill SSR issues
 const ManageEncounter = dynamic(
 	() => import("@/components/manageEncounter/ManageEncounter"),
-	{ ssr: false }
+	{ ssr: false },
 );
 
 interface ConsultationItem {
@@ -262,12 +262,12 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 									day: "numeric",
 									month: "short",
 									year: "numeric",
-							  })}`
+								})}`
 							: `Prescription on ${currentDate.toLocaleDateString("en-GB", {
 									day: "numeric",
 									month: "short",
 									year: "numeric",
-							  })}`;
+								})}`;
 
 					const payload = {
 						userName: localStorage.getItem("userName") || "",
@@ -354,7 +354,7 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 	};
 
 	const handleModeSelect = (
-		mode: "textToSpeech" | "attachDocument" | "addManually"
+		mode: "textToSpeech" | "attachDocument" | "addManually",
 	) => {
 		if (mode === "addManually") {
 			setOpenManualPrescriptionModal(true);
@@ -500,7 +500,7 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 	};
 
 	const handleChatFileChange = async (
-		event: React.ChangeEvent<HTMLInputElement>
+		event: React.ChangeEvent<HTMLInputElement>,
 	) => {
 		const file = event.target.files?.[0];
 		if (file) {
@@ -522,7 +522,7 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 				});
 				const docName = `Prescription on ${currentDate.toLocaleDateString(
 					"en-GB",
-					{ day: "numeric", month: "short", year: "numeric" }
+					{ day: "numeric", month: "short", year: "numeric" },
 				)}`;
 
 				const payload = {
@@ -555,7 +555,19 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 							response.data?.message || "Document uploaded successfully!",
 						severity: "success",
 					});
+					console.log("uploaded");
+					if (consultation.patientUid) {
+						const profilePayload = {
+							userName: localStorage.getItem("userName") || "",
+							userPwd: localStorage.getItem("userPwd") || "",
+							deviceStat: "D",
+							patientUid: consultation.patientUid,
+						};
 
+						const profileResponse = await getPetProfile(profilePayload);
+						setPetProfile(profileResponse);
+					}
+					console.log("upload end");
 					// Refresh consultation history to show the new document
 					const historyPayload = {
 						userName: localStorage.getItem("userName") || "",
@@ -743,7 +755,7 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 							variant='outlined'
 							onClick={() => {
 								const documentsSection = document.getElementById(
-									"shared-documents-section"
+									"shared-documents-section",
 								);
 								if (documentsSection) {
 									documentsSection.scrollIntoView({
@@ -1669,7 +1681,7 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 						mb: 1.5,
 						fontSize: "0.85rem",
 					}}>
-					SHARED DOCUMENTS
+					UPLOAD DOCUMENTS
 				</Typography>
 				<Box
 					sx={{
@@ -1754,7 +1766,7 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 						mb: 1.5,
 						fontSize: "0.85rem",
 					}}>
-					MY PRESCRIPTIONS
+					UPLOADED DOCUMENTS
 				</Typography>
 				<Box
 					sx={{
@@ -1806,7 +1818,7 @@ const ConsultationPopup: React.FC<ConsultationPopupProps> = ({
 										{prescription.documentDate}
 									</Button>
 								</Tooltip>
-							)
+							),
 						)
 					) : null}
 					<Button
