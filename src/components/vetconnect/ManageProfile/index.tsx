@@ -85,7 +85,7 @@ function VetConnectUserProfile() {
 	const [openSnackbar, setOpenSnackbar] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState("");
 	const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
-		"success"
+		"success",
 	);
 	const [specalityList, setSpecalityList] = useState<any[]>([]);
 	const educationColumns = [
@@ -228,7 +228,7 @@ function VetConnectUserProfile() {
 					fieldOfStudy: edu.docFieldOfStudy || "",
 					grade: edu.docGrade || "",
 					startDate: dayjs(edu.educationFromDt, "DD/MM/YYYY").format(
-						"DD-MM-YYYY"
+						"DD-MM-YYYY",
 					),
 					endDate: dayjs(edu.educationToDt, "DD/MM/YYYY").format("DD-MM-YYYY"),
 					action: (
@@ -246,7 +246,7 @@ function VetConnectUserProfile() {
 							/> */}
 						</>
 					),
-				})
+				}),
 			);
 			setEducationData([]);
 			setEducationData(eduRows);
@@ -260,7 +260,7 @@ function VetConnectUserProfile() {
 					doctorExperienceUid: exp.doctorExperienceUid,
 					location: exp.instituteAddress || "",
 					startDate: dayjs(exp.experienceFromDt, "DD/MM/YYYY").format(
-						"DD-MM-YYYY"
+						"DD-MM-YYYY",
 					),
 					endDate: dayjs(exp.experienceToDt, "DD/MM/YYYY").format("DD-MM-YYYY"),
 					action: (
@@ -278,7 +278,7 @@ function VetConnectUserProfile() {
 							/> */}
 						</>
 					),
-				})
+				}),
 			);
 			setExperienceData([]);
 			setExperienceData(expRows);
@@ -354,7 +354,7 @@ function VetConnectUserProfile() {
 	const handleEdit = (
 		type: "education" | "experience",
 		index: number,
-		row: any
+		row: any,
 	) => {
 		/* const row =
 			type === "education" ? educationData[index] : experienceData[index]; */
@@ -373,7 +373,7 @@ function VetConnectUserProfile() {
 
 	const saveTableChanges = (
 		type: "education" | "experience",
-		newRows: any[]
+		newRows: any[],
 	) => {
 		if (type === "education") {
 			setEducationData(newRows);
@@ -483,7 +483,7 @@ function VetConnectUserProfile() {
 							<Grid item xs={12} sm={1}>
 								{profileData?.imageFileName && (
 									<UploadBadge
-										path={`https://www.aptcarepet.com/${profileData.imageFileName}`}
+										path={`https://www.happyfurandfeather.com/${profileData.imageFileName}`}
 										onFileChange={handleFileChange}
 									/>
 								)}
@@ -689,7 +689,7 @@ function VetConnectUserProfile() {
 														? option
 														: `${option.cityName}${
 																option.stateName ? ", " + option.stateName : ""
-														  }`
+															}`
 												}
 												value={selectedCity || null}
 												onInputChange={(_, value) => {
@@ -747,7 +747,7 @@ function VetConnectUserProfile() {
 																		option.cityPincodeMappingId
 																			? " (" + option.cityPincodeMappingId + ")"
 																			: ""
-																  }`
+																	}`
 														}
 														value={field.value || ""}
 														onInputChange={(_, value) => {
@@ -763,7 +763,7 @@ function VetConnectUserProfile() {
 																setValue("areaName", value.areaName);
 																setValue(
 																	"cityPincodeMappingId",
-																	Number(value.cityPincodeMappingId) || 0
+																	Number(value.cityPincodeMappingId) || 0,
 																);
 																setValue("pin", value.pincode || "");
 															} else {
@@ -820,6 +820,7 @@ function VetConnectUserProfile() {
 											<Controller
 												name='pin'
 												control={control}
+												rules={{ maxLength: 6 }}
 												render={({ field }) => (
 													<TextField
 														{...field}

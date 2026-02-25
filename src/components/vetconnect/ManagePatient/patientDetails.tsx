@@ -69,7 +69,7 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 	const [openSnackbar, setOpenSnackbar] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState("");
 	const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
-		"success"
+		"success",
 	);
 
 	// dialogs
@@ -82,12 +82,12 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 	console.log("petlist");
 	console.log(selectedPet);
 	const [selectedPetId, setSelectedPetId] = useState<any>(
-		petList.patientUid ?? null
+		petList.patientUid ?? null,
 	);
 
 	// training toggle (local UI state)
 	const [checked, setChecked] = useState<boolean>(
-		Boolean(selectedPet?.trainingDone)
+		Boolean(selectedPet?.trainingDone),
 	);
 
 	dayjs.extend(customParseFormat);
@@ -256,9 +256,9 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 					? {
 							...chip,
 							variant: chip.variant === "filled" ? "outlined" : "filled",
-					  }
-					: chip
-			)
+						}
+					: chip,
+			),
 		);
 	};
 
@@ -269,9 +269,9 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 					? {
 							...chip,
 							variant: chip.variant === "filled" ? "outlined" : "filled",
-					  }
-					: chip
-			)
+						}
+					: chip,
+			),
 		);
 	};
 
@@ -280,7 +280,7 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 
 		// Parse and format to dd/mm/yyyy
 		const formattedDate = dayjs(cleanedDate, "DD-MMM-YYYY").format(
-			"DD/MM/YYYY"
+			"DD/MM/YYYY",
 		);
 
 		return formattedDate;
@@ -395,7 +395,7 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 		formDataUpload.append("orgId", localStorage.getItem("orgId") || "");
 		formDataUpload.append(
 			"loggedInFacilityId",
-			localStorage.getItem("loggedinFacilityId") || ""
+			localStorage.getItem("loggedinFacilityId") || "",
 		);
 		formDataUpload.append("doctorUId", localStorage.getItem("doctorUid") || "");
 
@@ -474,7 +474,7 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 	};
 
 	const handleDownload = (fileName: string) => {
-		const fileUrl = `https://www.aptcarepet.com/${fileName}`;
+		const fileUrl = `https://www.happyfurandfeather.com/${fileName}`;
 		console.log(fileName);
 		// Create a temporary anchor element
 		/* const link = document.createElement("a");
@@ -501,7 +501,7 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 					<Grid container>
 						<Grid item xs={12} sm={1}>
 							<UploadBadge
-								path={`https://www.aptcarepet.com/${selectedPet.ownerImageFileName}`}
+								path={`https://www.happyfurandfeather.com/${selectedPet.ownerImageFileName}`}
 							/>
 						</Grid>
 
@@ -813,6 +813,7 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 										name='pin'
 										disabled
 										control={control}
+										rules={{ maxLength: 6 }}
 										render={({ field }) => (
 											<TextField
 												{...field}
@@ -1084,7 +1085,7 @@ const PatientDetails: React.FC<PatientDetailsProps> = ({
 																	</Button>
 																</TableCell>
 															</TableRow>
-														)
+														),
 													)}
 												</TableBody>
 											</Table>

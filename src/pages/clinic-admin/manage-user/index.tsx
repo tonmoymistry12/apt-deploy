@@ -185,7 +185,7 @@ const ManageUsersPage = () => {
 	const rowData = useMemo(() => {
 		return users.map((user) => ({
 			image:
-				"https://www.aptcarepet.com/cimages/" + user.imageFileName ||
+				"https://www.happyfurandfeather.com/cimages/" + user.imageFileName ||
 				"https://via.placeholder.com/50",
 			name:
 				user.userNameWithTitle ||
@@ -242,8 +242,8 @@ const ManageUsersPage = () => {
 				email: userDetails.email || "",
 				cellNumber: userDetails.cellNumber || "",
 				imageFilePath:
-					"https://www.aptcarepet.com/cimages/" + userDetails.imageFileName ||
-					"https://via.placeholder.com/50",
+					"https://www.happyfurandfeather.com/cimages/" +
+						userDetails.imageFileName || "https://via.placeholder.com/50",
 				activeInd: userDetails.activeInd,
 				isDoctor: userDetails.isDoctor,
 				userTitle: userDetails.userTitle || "Mr.",

@@ -46,7 +46,7 @@ const PaymentCollection: React.FC<PaymentCollectionProps> = ({
 	const [openSnackbar, setOpenSnackbar] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState("");
 	const [snackbarSeverity, setSnackbarSeverity] = useState<"success" | "error">(
-		"success"
+		"success",
 	);
 	/* const [payments, setPayments] = useState<Payment[]>([
     {
@@ -140,7 +140,7 @@ const PaymentCollection: React.FC<PaymentCollectionProps> = ({
 	];
 
 	const handleViewClick = (filePath: any) => {
-		const BASE_URL = "https://www.aptcarepet.com/provider";
+		const BASE_URL = "https://www.happyfurandfeather.com/provider";
 		if (filePath) {
 			const fullUrl = `${BASE_URL}/${filePath}`;
 			window.open(fullUrl, "_blank");

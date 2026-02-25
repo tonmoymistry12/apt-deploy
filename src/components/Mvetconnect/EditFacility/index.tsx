@@ -51,18 +51,18 @@ type EditFacilityProps = {
 
 const EditFacility = forwardRef(function EditFacility(
 	{ facility, isEdit = true, onSubmit }: EditFacilityProps,
-	ref
+	ref,
 ) {
 	console.log("EditFacility props", facility);
 	console.log(
 		"internBilling from facility:",
 		facility.internBilling,
-		typeof facility.internBilling
+		typeof facility.internBilling,
 	);
 	console.log(
 		"patientsToView from facility:",
 		facility.patientsToView,
-		typeof facility.patientsToView
+		typeof facility.patientsToView,
 	);
 	const [form, setForm] = useState<FaclityServiceResponse>({
 		...facility,
@@ -73,7 +73,7 @@ const EditFacility = forwardRef(function EditFacility(
 	const [showColorPicker, setShowColorPicker] = useState(false);
 	const [previewImage, setPreviewImage] = useState<string | null>(null);
 	const [themeColor, setThemeColor] = useState(
-		facility.facilityColor || "#1a365d"
+		facility.facilityColor || "#1a365d",
 	);
 	const [hexInput, setHexInput] = useState(facility.facilityColor || "#1a365d");
 	const colorPickerRef = useRef<HTMLDivElement>(null);
@@ -124,12 +124,12 @@ const EditFacility = forwardRef(function EditFacility(
 		console.log(
 			"useEffect - facility.internBilling:",
 			facility.internBilling,
-			typeof facility.internBilling
+			typeof facility.internBilling,
 		);
 		console.log(
 			"useEffect - facility.patientsToView:",
 			facility.patientsToView,
-			typeof facility.patientsToView
+			typeof facility.patientsToView,
 		);
 		const updatedForm = {
 			...facility,
@@ -154,12 +154,12 @@ const EditFacility = forwardRef(function EditFacility(
 		console.log(
 			"Updated form internBilling:",
 			updatedForm.internBilling,
-			typeof updatedForm.internBilling
+			typeof updatedForm.internBilling,
 		);
 		console.log(
 			"Updated form patientsToView:",
 			updatedForm.patientsToView,
-			typeof updatedForm.patientsToView
+			typeof updatedForm.patientsToView,
 		);
 		setForm(updatedForm);
 		setThemeColor(facility.facilityColor || "#1a365d");
@@ -224,7 +224,7 @@ const EditFacility = forwardRef(function EditFacility(
 	}, [themeColor]);
 
 	const handleChange = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 	) => {
 		const { name, value } = e.target;
 		setForm((prev) => ({ ...prev, [name]: value }));
@@ -254,7 +254,7 @@ const EditFacility = forwardRef(function EditFacility(
 	const handleFormSubmit = async (
 		eventOrCallbacks?:
 			| React.FormEvent
-			| { onSuccess?: () => void; onError?: () => void }
+			| { onSuccess?: () => void; onError?: () => void },
 	) => {
 		let event: React.FormEvent | undefined = undefined;
 		let callbacks: { onSuccess?: () => void; onError?: () => void } = {};
@@ -300,12 +300,12 @@ const EditFacility = forwardRef(function EditFacility(
 	console.log(
 		"Final form.internBilling:",
 		form.internBilling,
-		typeof form.internBilling
+		typeof form.internBilling,
 	);
 	console.log(
 		"Final form.patientsToView:",
 		form.patientsToView,
-		typeof form.patientsToView
+		typeof form.patientsToView,
 	);
 
 	return (
@@ -433,7 +433,7 @@ const EditFacility = forwardRef(function EditFacility(
 									? option
 									: `${option.cityName}${
 											option.stateName ? ", " + option.stateName : ""
-									  }`
+										}`
 							}
 							value={selectedCity || form.city}
 							onInputChange={(_, value) => {
@@ -487,7 +487,7 @@ const EditFacility = forwardRef(function EditFacility(
 											option.cityPincodeMappingId
 												? " (" + option.cityPincodeMappingId + ")"
 												: ""
-									  }`
+										}`
 							}
 							value={form.areaName || ""}
 							onInputChange={(_, value) => {

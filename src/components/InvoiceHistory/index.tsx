@@ -155,7 +155,7 @@ const InvoiceHistory: React.FC<InvoiceHistoryProps> = ({ onDataUpdate }) => {
 	];
 
 	const handlePrintClick = (filePath: any) => {
-		const BASE_URL = "https://www.aptcarepet.com/provider";
+		const BASE_URL = "https://www.happyfurandfeather.com/provider";
 		if (filePath) {
 			const fullUrl = `${BASE_URL}/${filePath}`;
 			window.open(fullUrl, "_blank");

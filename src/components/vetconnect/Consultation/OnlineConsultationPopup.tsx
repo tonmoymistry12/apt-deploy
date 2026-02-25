@@ -34,7 +34,7 @@ import {
 } from "@/services/manageCalendar";
 // import { MedicalRecord } from "@/components/manageEncounter/types";
 
-const BASE_URL = "https://www.aptcarepet.com";
+const BASE_URL = "https://www.happyfurandfeather.com";
 
 // Dynamically import ManageEncounter with SSR disabled to avoid Quill SSR issues
 const ManageEncounter = dynamic(

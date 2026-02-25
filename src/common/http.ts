@@ -1,7 +1,7 @@
 import axios from "axios";
 import { loaderService } from "@/components/Loader/loaderService";
 
-const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://www.aptcarepet.com/AptcareDWebService';
+const baseURL = process.env.NEXT_PUBLIC_API_URL || 'https://www.happyfurandfeather.com/AptcareDWebService';
 
 const http = axios.create({
   baseURL,
